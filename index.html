@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Planner</title>
+  <meta
+    name="description"
+    content="A calm, focused study planner for organizing subjects, tasks, and study sessions."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Raleway:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">GitHub Pages Study Planner</p>
+        <h1>Plan focused study weeks with less friction.</h1>
+      </div>
+      <div class="topbar-actions">
+        <button class="ghost-button" id="load-demo-button" type="button">Reload demo data</button>
+        <button class="primary-button" id="clear-data-button" type="button">Clear planner</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="hero-card">
+        <div class="hero-copy">
+          <p class="kicker">Local-first planner</p>
+          <h2>Track subjects, upcoming deadlines, and weekly momentum in one place.</h2>
+          <p class="hero-text">
+            This first version runs entirely in the browser with local storage, so it is GitHub Pages-ready.
+            Firebase can be layered in later for sign-in and sync.
+          </p>
+          <div class="hero-badges">
+            <span class="badge">Static hosting</span>
+            <span class="badge">Responsive layout</span>
+            <span class="badge">Free-tier friendly</span>
+          </div>
+        </div>
+        <div class="hero-stats" id="hero-stats"></div>
+      </section>
+
+      <section class="dashboard-grid">
+        <article class="panel panel-wide">
+          <div class="panel-header">
+            <div>
+              <p class="section-label">Today</p>
+              <h3>Daily focus</h3>
+            </div>
+            <p class="section-note" id="today-date"></p>
+          </div>
+          <div class="today-grid">
+            <div class="list-card">
+              <h4>Study sessions</h4>
+              <div id="today-sessions" class="stack-list"></div>
+            </div>
+            <div class="list-card">
+              <h4>Priority tasks</h4>
+              <div id="priority-tasks" class="stack-list"></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="section-label">Weekly progress</p>
+              <h3>Goal pacing</h3>
+            </div>
+          </div>
+          <div id="weekly-progress" class="progress-stack"></div>
+        </article>
+      </section>
+
+      <section class="content-grid">
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="section-label">Subjects</p>
+              <h3>Focus areas</h3>
+            </div>
+          </div>
+          <form id="subject-form" class="form-grid">
+            <label>
+              Subject name
+              <input id="subject-name" name="subjectName" type="text" maxlength="40" placeholder="Biology" required>
+            </label>
+            <label>
+              Weekly goal (hours)
+              <input id="subject-hours" name="subjectHours" type="number" min="1" max="40" value="5" required>
+            </label>
+            <label>
+              Accent color
+              <input id="subject-color" name="subjectColor" type="color" value="#2563eb">
+            </label>
+            <button class="primary-button" type="submit">Add subject</button>
+          </form>
+          <div id="subjects-list" class="card-list"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="section-label">Tasks</p>
+              <h3>Upcoming work</h3>
+            </div>
+          </div>
+          <form id="task-form" class="form-grid">
+            <label>
+              Task title
+              <input id="task-title" name="taskTitle" type="text" maxlength="80" placeholder="Review chapters 3-4" required>
+            </label>
+            <label>
+              Subject
+              <select id="task-subject" name="taskSubject" required></select>
+            </label>
+            <label>
+              Due date
+              <input id="task-due-date" name="taskDueDate" type="date" required>
+            </label>
+            <label>
+              Priority
+              <select id="task-priority" name="taskPriority">
+                <option value="high">High</option>
+                <option value="medium" selected>Medium</option>
+                <option value="low">Low</option>
+              </select>
+            </label>
+            <label>
+              Estimated minutes
+              <input id="task-estimate" name="taskEstimate" type="number" min="15" max="480" step="15" value="60" required>
+            </label>
+            <button class="primary-button" type="submit">Add task</button>
+          </form>
+          <div id="tasks-list" class="card-list"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="section-label">Sessions</p>
+              <h3>Study blocks</h3>
+            </div>
+          </div>
+          <form id="session-form" class="form-grid">
+            <label>
+              Session title
+              <input id="session-title" name="sessionTitle" type="text" maxlength="80" placeholder="Flashcards and quiz" required>
+            </label>
+            <label>
+              Subject
+              <select id="session-subject" name="sessionSubject" required></select>
+            </label>
+            <label>
+              Date
+              <input id="session-date" name="sessionDate" type="date" required>
+            </label>
+            <label>
+              Start time
+              <input id="session-time" name="sessionTime" type="time" required>
+            </label>
+            <label>
+              Duration (minutes)
+              <input id="session-duration" name="sessionDuration" type="number" min="15" max="240" step="15" value="90" required>
+            </label>
+            <button class="primary-button" type="submit">Schedule session</button>
+          </form>
+          <div id="sessions-list" class="card-list"></div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <template id="empty-state-template">
+    <div class="empty-state">
+      <p class="empty-title">Nothing here yet</p>
+      <p class="empty-copy"></p>
+    </div>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
