@@ -1,6 +1,6 @@
-# Study Planner
+# Plan Study Week
 
-A calm, GitHub Pages-ready study planner for managing subjects, tasks, and study sessions in the browser.
+A calm, GitHub Pages-ready study planner for managing subjects, tasks, and study sessions in the browser with Northline branding.
 
 ## Status
 
@@ -62,3 +62,7 @@ A sensible next step is:
 - Keep local storage as the fallback when signed out
 
 This approach stays friendly to Firebase's free Spark plan for modest usage.
+
+## Branding Note
+
+The public product name is `Plan Study Week`, while the repo slug remains `study-planner` until the rename pass.

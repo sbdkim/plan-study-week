@@ -1,20 +1,20 @@
 :root {
-  --bg: #f8fafc;
-  --bg-strong: #ffffff;
-  --bg-muted: #edf2f7;
-  --surface: rgba(255, 255, 255, 0.92);
-  --text: #1e293b;
-  --text-muted: #526277;
-  --border: #d9e2ec;
-  --border-strong: #bfd0e2;
-  --primary: #2563eb;
-  --primary-soft: #dbeafe;
-  --accent: #f97316;
-  --danger: #b91c1c;
+  --bg: var(--color-surface-base);
+  --bg-strong: var(--color-surface-raised);
+  --bg-muted: var(--color-surface-sunken);
+  --surface: color-mix(in srgb, var(--color-surface-raised) 92%, transparent);
+  --text: var(--color-text-primary);
+  --text-muted: var(--color-text-secondary);
+  --border: var(--color-border-subtle);
+  --border-strong: var(--color-border-default);
+  --primary: var(--color-brand-primary);
+  --primary-soft: color-mix(in srgb, var(--color-brand-primary) 12%, white);
+  --accent: var(--color-brand-accent);
+  --danger: var(--color-status-error);
   --radius-lg: 28px;
   --radius-md: 18px;
   --radius-sm: 12px;
-  --shadow-soft: 0 24px 50px rgba(148, 163, 184, 0.12);
+  --shadow-soft: var(--shadow-lg);
   --max-width: 1280px;
 }
 
@@ -28,7 +28,7 @@ html {
 
 body {
   margin: 0;
-  font-family: "Raleway", sans-serif;
+  font-family: var(--font-body);
   color: var(--text);
   background:
     radial-gradient(circle at top left, rgba(37, 99, 235, 0.08), transparent 28%),
@@ -82,7 +82,7 @@ select:focus-visible {
 .hero-card h2,
 .panel h3 {
   margin: 0;
-  font-family: "Lora", serif;
+  font-family: var(--font-display);
 }
 
 .topbar h1 {
@@ -98,7 +98,7 @@ select:focus-visible {
   letter-spacing: 0.18em;
   font-size: 0.73rem;
   font-weight: 700;
-  color: var(--primary);
+  color: var(--color-brand-secondary);
   margin: 0 0 10px;
 }
 
@@ -161,7 +161,7 @@ select:focus-visible {
   align-items: center;
   padding: 10px 14px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.9);
+  background: color-mix(in srgb, var(--color-surface-raised) 88%, white);
   border: 1px solid var(--border);
   font-size: 0.9rem;
   font-weight: 600;
@@ -177,7 +177,7 @@ select:focus-visible {
 .stat-card strong {
   display: block;
   font-size: 2rem;
-  font-family: "Lora", serif;
+  font-family: var(--font-display);
   margin-top: 12px;
 }
 
