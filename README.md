@@ -44,7 +44,7 @@ Typical flow:
 
 ### Recommended Repo Settings
 
-- Repository name: `study-planner`
+- Repository name: `plan-study-week`
 - Pages source: `Deploy from a branch`
 - Branch: `main`
 - Folder: `/ (root)`
@@ -65,4 +65,4 @@ This approach stays friendly to Firebase's free Spark plan for modest usage.
 
 ## Branding Note
 
-The public product name is `Plan Study Week`, while the repo slug remains `study-planner` until the rename pass.
+The public product name is `Plan Study Week`, and the repo slug target is `plan-study-week`.

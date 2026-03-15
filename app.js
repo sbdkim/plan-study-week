@@ -1,4 +1,4 @@
-const STORAGE_KEY = "study-planner-v1";
+const STORAGE_KEY = "plan-study-week-v1";
 
 const today = new Date();
 
