@@ -98,6 +98,8 @@ const elements = {
   sessionForm: document.querySelector("#session-form"),
   taskSubject: document.querySelector("#task-subject"),
   sessionSubject: document.querySelector("#session-subject"),
+  taskFormNote: document.querySelector("#task-form-note"),
+  sessionFormNote: document.querySelector("#session-form-note"),
   clearDataButton: document.querySelector("#clear-data-button"),
   loadDemoButton: document.querySelector("#load-demo-button"),
   emptyStateTemplate: document.querySelector("#empty-state-template")
@@ -285,12 +287,18 @@ function renderTodaySections() {
   fillCollection(
     elements.todaySessions,
     todaysSessions.map((session) => createSessionCard(session, true)),
-    "Schedule a study block to shape the day ahead."
+    {
+      title: "No sessions yet",
+      copy: "Schedule a study block to shape the day ahead."
+    }
   );
   fillCollection(
     elements.priorityTasks,
     priorityTasks.map((task) => createTaskCard(task, true)),
-    "Add a few high-impact tasks so your dashboard has a clear target."
+    {
+      title: "Nothing urgent yet",
+      copy: "Add a few high-impact tasks so your dashboard has a clear target."
+    }
   );
 }
 
@@ -324,7 +332,10 @@ function renderWeeklyProgress() {
       `;
       return card;
     }),
-    "Complete sessions to track how close each subject is to its weekly target."
+    {
+      title: "No progress to chart",
+      copy: "Complete sessions to track how close each subject is to its weekly target."
+    }
   );
 }
 
@@ -351,7 +362,10 @@ function renderSubjects() {
       card.querySelector("[data-action='delete-subject']").addEventListener("click", () => deleteSubject(subject.id));
       return card;
     }),
-    "Create a subject to unlock tasks, sessions, and progress tracking."
+    {
+      title: "No subjects yet",
+      copy: "Create a subject to unlock tasks, sessions, and progress tracking."
+    }
   );
 }
 
@@ -360,7 +374,10 @@ function renderTasks() {
   fillCollection(
     elements.tasksList,
     tasks.map((task) => createTaskCard(task, false)),
-    "Add a task with a due date to build your study queue."
+    {
+      title: "No tasks yet",
+      copy: "Add a task with a due date to build your study queue."
+    }
   );
 }
 
@@ -369,7 +386,10 @@ function renderSessions() {
   fillCollection(
     elements.sessionsList,
     sessions.map((session) => createSessionCard(session, false)),
-    "Schedule a session to make your week feel concrete."
+    {
+      title: "No sessions planned",
+      copy: "Schedule a session to make your week feel concrete."
+    }
   );
 }
 
@@ -382,6 +402,12 @@ function renderSubjectOptions() {
   elements.sessionSubject.innerHTML = options;
   elements.taskSubject.disabled = !state.subjects.length;
   elements.sessionSubject.disabled = !state.subjects.length;
+  elements.taskForm.querySelector('button[type="submit"]').disabled = !state.subjects.length;
+  elements.sessionForm.querySelector('button[type="submit"]').disabled = !state.subjects.length;
+  elements.taskFormNote.hidden = state.subjects.length > 0;
+  elements.sessionFormNote.hidden = state.subjects.length > 0;
+  elements.taskFormNote.textContent = "Add a subject first, then tasks can be assigned to a focus area.";
+  elements.sessionFormNote.textContent = "Add a subject first so each study block has a clear home.";
 }
 
 function createTaskCard(task, compact) {
@@ -451,11 +477,12 @@ function createSessionCard(session, compact) {
   return wrapper;
 }
 
-function fillCollection(container, nodes, emptyCopy) {
+function fillCollection(container, nodes, emptyState) {
   container.innerHTML = "";
   if (!nodes.length) {
     const empty = elements.emptyStateTemplate.content.firstElementChild.cloneNode(true);
-    empty.querySelector(".empty-copy").textContent = emptyCopy;
+    empty.querySelector(".empty-title").textContent = emptyState.title;
+    empty.querySelector(".empty-copy").textContent = emptyState.copy;
     container.append(empty);
     return;
   }

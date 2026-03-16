@@ -254,6 +254,13 @@ select:focus-visible {
   transition: border-color 180ms ease, transform 180ms ease;
 }
 
+.form-grid input:disabled,
+.form-grid select:disabled {
+  background: var(--bg-muted);
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
+
 .form-grid input:hover,
 .form-grid select:hover {
   border-color: var(--border-strong);
@@ -267,6 +274,15 @@ select:focus-visible {
   padding: 12px 16px;
   font-weight: 700;
   transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+
+.primary-button:focus-visible,
+.ghost-button:focus-visible,
+.action-button:focus-visible,
+.form-grid input:focus-visible,
+.form-grid select:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--color-brand-accent) 24%, white);
+  outline-offset: 3px;
 }
 
 .primary-button:hover,
@@ -399,7 +415,7 @@ select:focus-visible {
 }
 
 .empty-state {
-  text-align: center;
+  text-align: left;
   padding: 20px;
   border: 1px dashed var(--border);
   border-radius: var(--radius-md);
@@ -415,6 +431,16 @@ select:focus-visible {
 
 .empty-copy {
   margin: 10px 0 0;
+}
+
+.form-helper {
+  margin: 14px 0 0;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--text-muted);
+  line-height: 1.6;
 }
 
 .completed {
@@ -476,5 +502,11 @@ select:focus-visible {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+
+  .primary-button:hover,
+  .ghost-button:hover,
+  .action-button:hover {
+    transform: none;
   }
 }
