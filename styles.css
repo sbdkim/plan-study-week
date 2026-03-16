@@ -165,7 +165,7 @@ select:focus-visible {
   align-items: center;
   padding: 10px 14px;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--color-surface-raised) 88%, white);
+  background: color-mix(in srgb, var(--color-surface-raised) 88%, var(--bg));
   border: 1px solid var(--border);
   font-size: 0.9rem;
   font-weight: 600;
@@ -174,7 +174,7 @@ select:focus-visible {
 .stat-card {
   padding: 18px;
   border-radius: var(--radius-md);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(219, 234, 254, 0.92));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--surface) 96%, var(--bg-strong)), color-mix(in srgb, var(--primary) 14%, var(--bg-strong)));
   border: 1px solid var(--border);
 }
 
@@ -285,7 +285,7 @@ select:focus-visible {
 .action-button:focus-visible,
 .form-grid input:focus-visible,
 .form-grid select:focus-visible {
-  outline: 3px solid color-mix(in srgb, var(--color-brand-accent) 24%, white);
+  outline: 3px solid color-mix(in srgb, var(--color-brand-accent) 26%, transparent);
   outline-offset: 3px;
 }
 
@@ -305,13 +305,13 @@ select:focus-visible {
 }
 
 .ghost-button {
-  background: rgba(255, 255, 255, 0.8);
+  background: color-mix(in srgb, var(--bg-strong) 84%, var(--surface));
   border-color: var(--border);
   color: var(--text);
 }
 
 .ghost-button:hover {
-  background: #ffffff;
+  background: var(--surface);
 }
 
 .card-header,
@@ -434,7 +434,7 @@ select:focus-visible {
   border: 1px dashed var(--border);
   border-radius: var(--radius-md);
   color: var(--text-muted);
-  background: rgba(255, 255, 255, 0.6);
+  background: color-mix(in srgb, var(--surface) 72%, var(--bg));
 }
 
 .empty-title {
@@ -452,7 +452,7 @@ select:focus-visible {
   padding: 12px 14px;
   border-radius: var(--radius-md);
   border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.72);
+  background: color-mix(in srgb, var(--bg-strong) 80%, var(--surface));
   color: var(--text-muted);
   line-height: 1.6;
 }
