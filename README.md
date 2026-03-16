@@ -1,13 +1,11 @@
 # Plan Study Week
 
-A calm, GitHub Pages-ready study planner for managing subjects, tasks, and study sessions in the browser with Northline branding.
+A calm browser-based study planner for managing subjects, tasks, and study sessions with a GitHub Pages-ready static setup.
 
-## Status
-
-Initial static MVP scaffolded for deployment on GitHub Pages.
+## Live Demo
+This project is ready for GitHub Pages deployment, but no published URL is documented in the repo yet.
 
 ## Key Features
-
 - Local-first planner with browser storage
 - Subject, task, and study-session tracking
 - Weekly goal progress by subject
@@ -15,54 +13,30 @@ Initial static MVP scaffolded for deployment on GitHub Pages.
 - Firebase-friendly architecture for future auth and sync
 
 ## Tech Stack
-
 - HTML
 - CSS
 - JavaScript
 - Optional Firebase later for auth and cross-device sync
 
-## Run Locally
+## Setup / Run Locally
+Open `index.html` directly in the browser, or serve the repo with a lightweight local server such as `npx serve` or `python -m http.server`.
 
-Because this is a static site, you can open `index.html` directly in the browser or serve it with a lightweight local server.
+## Tests
+No automated test suite is set up yet for this static MVP.
 
-Examples:
+## Deployment Notes
+- The project is designed for GitHub Pages deployment from the repository root.
+- Relative asset paths already work for local use and project-page publishing.
+- Recommended repo slug: `plan-study-week`.
 
-- VS Code Live Server
-- `npx serve`
-- `python -m http.server`
+## Project Layout
+- `index.html` main planner shell
+- `app.js` planner behavior and local-state handling
+- `styles.css` layout and visual styling
+- `shared/` reused styling assets
+- `tasks/current-plan.md` working notes for the MVP
 
-## Deployment
-
-This project is designed for GitHub Pages.
-
-Typical flow:
-
-1. Push the repo to GitHub.
-2. Open repository settings.
-3. Enable GitHub Pages from the main branch root.
-4. Visit the generated Pages URL.
-
-### Recommended Repo Settings
-
-- Repository name: `plan-study-week`
-- Pages source: `Deploy from a branch`
-- Branch: `main`
-- Folder: `/ (root)`
-
-If you publish as a project page, the current relative asset paths already work without changes.
-
-## Firebase Notes
-
-The current MVP does not require Firebase.
-
-A sensible next step is:
-
-- Firebase Auth for optional Google sign-in
-- Firestore for syncing planner data by user
-- Keep local storage as the fallback when signed out
-
-This approach stays friendly to Firebase's free Spark plan for modest usage.
-
-## Branding Note
-
-The public product name is `Plan Study Week`, and the repo slug target is `plan-study-week`.
+## Notes
+- The current MVP does not require Firebase.
+- A sensible next step is Firebase Auth plus Firestore sync, while keeping `localStorage` as the signed-out fallback.
+- The public product name is `Plan Study Week`, and the repo slug target is `plan-study-week`.
