@@ -122,6 +122,10 @@ select:focus-visible {
   gap: 16px;
 }
 
+.form-grid {
+  margin-bottom: 18px;
+}
+
 .layout {
   margin-top: 24px;
   gap: 24px;
@@ -383,10 +387,20 @@ select:focus-visible {
   margin-top: 14px;
 }
 
+.card-actions {
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
 .action-button {
   background: transparent;
   border-color: var(--border);
   color: var(--text);
+}
+
+.card-actions .action-button {
+  padding: 9px 13px;
+  font-size: 0.86rem;
 }
 
 .action-button.is-active {
